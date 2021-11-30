@@ -1,0 +1,178 @@
+GET http://localhost:8081/api/category/one/4
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY4MTEzODMsImV4cCI6MTYzNjg5Nzc4M30.uaicL0pH631dD3wzXR_s4zqqwiLqNuUVcjD3rFkZRo8ZrUdHQ0Py1NZGi0KHHgpNRbZS_tX6m9OPB39gzunMoA
+
+
+###
+POST http://localhost:8081/api/category
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY3ODMxMzYsImV4cCI6MTYzNjg2OTUzNn0.MH7TsrlGgEWeoNDIz7mJDVIa_hFPu1reyq0KGQow7L43IqEeSQZMk1eWTG10WfThZezESnyZRLRFYl_oLar-hw
+
+{
+  "name": "Kir Yuvish Mashinasi",
+  "parentCategoryId": 2
+}
+
+###
+GET http://localhost:8081/api/category/all
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY4MDI1NjYsImV4cCI6MTYzNjg4ODk2Nn0.hhle8aXHNwsTVOqWA1h_WARXlIqe3x9O2i19sEdhrd80FVJ4jxrNQSku8sIbjcFPRWWBMKnX5BHX-KArBQ4LlQ
+
+###
+GET http://localhost:8081/api/category/allByParent/2
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY4MDI1NjYsImV4cCI6MTYzNjg4ODk2Nn0.hhle8aXHNwsTVOqWA1h_WARXlIqe3x9O2i19sEdhrd80FVJ4jxrNQSku8sIbjcFPRWWBMKnX5BHX-KArBQ4LlQ
+
+
+
+###
+PUT http://localhost:8081/api/category/4
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY4MDI1NjYsImV4cCI6MTYzNjg4ODk2Nn0.hhle8aXHNwsTVOqWA1h_WARXlIqe3x9O2i19sEdhrd80FVJ4jxrNQSku8sIbjcFPRWWBMKnX5BHX-KArBQ4LlQ
+
+{
+  "name": "Televizor",
+  "active": true
+}
+
+###
+DELETE http://localhost:8081/api/category/7
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY4MTEzODMsImV4cCI6MTYzNjg5Nzc4M30.uaicL0pH631dD3wzXR_s4zqqwiLqNuUVcjD3rFkZRo8ZrUdHQ0Py1NZGi0KHHgpNRbZS_tX6m9OPB39gzunMoA
+
+###
+
+POST http://localhost/api/measurement
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYwMzg3NzIsImV4cCI6MTYzNjM5ODc3Mn0.-xGKM3tEHlb2wIa7VtaqTuFSBkemYIWjZTpU_na_odO6jYfNzwF19ahveTAbvhQmO1WBsNooNmu3rdNU3ezF4Q
+
+{
+  "name": "KG"
+}
+
+###
+POST http://localhost/api/supplier
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYwMzg3NzIsImV4cCI6MTYzNjM5ODc3Mn0.-xGKM3tEHlb2wIa7VtaqTuFSBkemYIWjZTpU_na_odO6jYfNzwF19ahveTAbvhQmO1WBsNooNmu3rdNU3ezF4Q
+
+{
+  "name": "Jafar"
+}
+
+###
+POST http://localhost/api/product
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY5OTU5ODYsImV4cCI6MTYzNzA4MjM4Nn0.6L3djZbiJ7vT_lWRFDpoC-TA2bKZvkRNFDsDsmng0HkpVnA4rj1Jpj6oZqWbcRPCjrN0c-u-Dtt4bfUE25q72Q
+
+{
+  "name": "Huawei",
+  "catId": 2,
+  "measureId": 1
+}
+
+
+###
+POST http://localhost:80/api/auth/login
+Content-Type: application/json
+
+{
+  "userName": "912455897",
+  "password": "123"
+}
+
+###super eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzU4NjY0MjYsImV4cCI6MTYzNTkwMjQyNn0.ckd4f4pvGm24oBMkGwt08fg7DD51qdl27RNCyd9iuqGdIe4VrWqwTwg87qTzm-NXrG8ztuSW_IqcUvL5FfsFoQ
+###
+#add warehouse
+POST http://localhost:8081/api/warehouse
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzU4NjY0MjYsImV4cCI6MTYzNTkwMjQyNn0.ckd4f4pvGm24oBMkGwt08fg7DD51qdl27RNCyd9iuqGdIe4VrWqwTwg87qTzm-NXrG8ztuSW_IqcUvL5FfsFoQ
+
+{
+  "name": "Nomer3"
+}
+
+###
+###get one byId
+GET http://localhost/api/product/3
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzU5MjE2MDcsImV4cCI6MTYzNjI4MTYwN30.6DLR-Cu0sjDryiulR8yp1_I0kpsEVsdew7s27eS4hUzaKtXBlzoTIgbGXTZpeMdi4KKR1-Het5J7kbmXf5OYaw
+
+###
+###get all
+GET http://localhost/api/product/allProduct
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzU5MjE2MDcsImV4cCI6MTYzNjI4MTYwN30.6DLR-Cu0sjDryiulR8yp1_I0kpsEVsdew7s27eS4hUzaKtXBlzoTIgbGXTZpeMdi4KKR1-Het5J7kbmXf5OYaw
+
+###
+POST http://localhost:80/api/input
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzcyNDc2NjEsImV4cCI6MTYzNzMzNDA2MX0.AsdSAxYn60_NERndiYCzSyPY1HtTSMT2UkkwWgxQW9RYnnnO5o_fkcKYBeOhP0gb6GMCGosXKis7EAcR_Mnqjg
+
+{
+  "warehouseId": 1,
+  "currencyId": 1,
+  "factureName": "N4",
+  "supplierId": 1,
+  "inputProductDTOS": [
+    {
+      "productId": 1,
+      "amount": 200,
+      "price": 3000,
+      "expireDate": "19-11-2021"
+    }
+  ]
+}
+
+###
+
+
+
+###get all
+GET http://localhost/api/input/all?page=0&size=2
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYyMTAxODMsImV4cCI6MTYzNjI5NjU4M30.blPmbto3VdGmg5C94Yovviir36haDMNp3otOGmcNnChYXE6FTlZimmLAkRoPp8sRUWCKRSUaTFGlSYEkVN5o1g
+
+###get from to
+GET http://localhost/api/input?from=05-11-2021&to=15-11-2021
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYyMTAxODMsImV4cCI6MTYzNjI5NjU4M30.blPmbto3VdGmg5C94Yovviir36haDMNp3otOGmcNnChYXE6FTlZimmLAkRoPp8sRUWCKRSUaTFGlSYEkVN5o1g
+
+### get search
+GET http://localhost:80/api/input/searchType?type=daily&date=04-11-2021
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYyMTAxODMsImV4cCI6MTYzNjI5NjU4M30.blPmbto3VdGmg5C94Yovviir36haDMNp3otOGmcNnChYXE6FTlZimmLAkRoPp8sRUWCKRSUaTFGlSYEkVN5o1g
+
+###
+POST http://localhost/api/measurement
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzYwMzg3NzIsImV4cCI6MTYzNjM5ODc3Mn0.-xGKM3tEHlb2wIa7VtaqTuFSBkemYIWjZTpU_na_odO6jYfNzwF19ahveTAbvhQmO1WBsNooNmu3rdNU3ezF4Q
+
+{
+  "name": "kg"
+}
+
+###
+POST http://localhost:80/api/roles/add
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY2MjgxODAsImV4cCI6MTYzNjcxNDU4MH0.7X5RjgEqmpcJ5J9ApUKrwI6xt6vNahVj6toZW33Bg8Pr6GXycvzBYz4Bdl0SEOL3LxNFkknFBG94o6b6i_kvzw
+
+{
+  "name": "new Role1",
+  "active": true,
+  "permission": [
+    "ADD_USER",
+    "EDIT_USER"
+  ]
+}
+
+
+
+###
+GET http://localhost:80/api/product/top?top=desc
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY3ODYwNzYsImV4cCI6MTYzNjg3MjQ3Nn0.t_oH_qvT6Ve7nUAMVM5d-uQJm-54Rl_1YPS50McrwiBezlgH1rDTfw2ibiLjX_c2wCEdDzi4WAsi9kUdEHvQHQ
+
+###
+GET http://localhost/api/input/history?supplierId=1&from='2021-01-01 00:00:00'&to='2021-11-11 00:00:00'
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5MTI0NTU4OTciLCJpYXQiOjE2MzY3ODYwNzYsImV4cCI6MTYzNjg3MjQ3Nn0.t_oH_qvT6Ve7nUAMVM5d-uQJm-54Rl_1YPS50McrwiBezlgH1rDTfw2ibiLjX_c2wCEdDzi4WAsi9kUdEHvQHQ
