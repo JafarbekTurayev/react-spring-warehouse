@@ -11,11 +11,14 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="warehouse-app (1)" target="1.8" />
+      <module name="warehouse-app (2)" target="1.8" />
       <module name="warehouse-server" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="warehouse-app (1)" options="-parameters" />
       <module name="warehouse-server" options="-parameters" />
     </option>
   </component>
