@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/warehouse-client/warehouse-client.iml" filepath="$PROJECT_DIR$/warehouse-client/warehouse-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/../warehouse-app/warehouse-server.iml" filepath="$PROJECT_DIR$/../warehouse-app/warehouse-server.iml" />
     </modules>
   </component>
