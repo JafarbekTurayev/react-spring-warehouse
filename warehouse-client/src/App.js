@@ -15,6 +15,7 @@ const App = () => {
                 <Link to="/currency">Currency page</Link>
                 <br/>
                 <Link to="/input">Input page</Link>
+                <br/>
             </div>
 
 

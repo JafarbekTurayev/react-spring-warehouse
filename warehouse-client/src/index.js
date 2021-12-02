@@ -9,13 +9,14 @@ import Login from "./pages/Login";
 import Supplier from "./pages/Supplier";
 import OneSupplier from "./pages/OneSupplier";
 import Test from "./pages/Test";
+import Currency from "./pages/Currency";
+import Input from "./pages/Input";
 
 ReactDOM.render(
     <BrowserRouter>
         <Routes>
             <Route path="/" element={<App/>}/>
             <Route path="/login" element={<Login/>}/>
-
             {/*<Route path="/supplier" element={<Supplier/>}>*/}
             {/*    <Route path=":id" element={<OneSupplier/>}/>*/}
             {/*    <Route path="test" element={<Test/>}/>*/}
@@ -23,8 +24,9 @@ ReactDOM.render(
             <Route path="/supplier" element={<Supplier/>}/>
             <Route path="/supplier/:id" element={<OneSupplier/>}/>
             <Route path="/supplier/test" element={<Test/>}/>
-            <Route path="/input"/>
-            <Route path="/currency"/>
+            <Route path="/input" element={<Input/>}/>
+            <Route path="/currency" element={<Currency/>}/>
+            {/*<Route path="/measurement" element={<Measurement/>}/>*/}
         </Routes>
     </BrowserRouter>,
     document.getElementById('root')
