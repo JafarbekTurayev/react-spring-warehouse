@@ -7,8 +7,10 @@ import {
 } from 'availity-reactstrap-validation';
 import {API_PATH, HEADER} from "../service/api";
 import {toast} from "react-toastify";
+import {useNavigate} from "react-router-dom";
 
 const Supplier = () => {
+    let history = useNavigate();
     const [suppliers, setSupplier] = useState([]);
     const [openModal, setOpenModal] = useState(false);
     const [currentItem, setCurrentItem] = useState(undefined);
@@ -100,7 +102,8 @@ const Supplier = () => {
                         <tbody>
                         {
                             suppliers.map((value, index) =>
-                                <tr key={index}>
+                                <tr key={index} onClick={
+                                    () => history("/supplier/" + value.id)}>
                                     <th scope="row">{index + 1}</th>
                                     <td>{value.name}</td>
                                     <td>{value.phoneNumber}</td>

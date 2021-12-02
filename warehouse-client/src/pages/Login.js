@@ -5,15 +5,15 @@ import {useNavigate} from "react-router";
 import {API_PATH} from "../service/api";
 
 const Login = () => {
-    // let router = useNavigate();
+    let ketmon = useNavigate();
     const login = (event, values) => {
         console.log(values)
         axios.post(API_PATH + "auth/login", values)
             .then(value => {
                 console.log(value)
                 localStorage.setItem("warehouse-token", "Bearer " + value.data)
+                ketmon("/supplier")
             })
-        // router("/supplier")
     }
     return (
         <div>
