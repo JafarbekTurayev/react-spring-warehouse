@@ -16,6 +16,8 @@ const App = () => {
                 <br/>
                 <Link to="/input">Input page</Link>
                 <br/>
+                <Link to="/product">Product page</Link>
+                <br/>
             </div>
 
 

@@ -46,7 +46,6 @@ public class InputController {
         return ResponseEntity.ok(response);
     }
 
-
     //from to
     @GetMapping()
     public HttpEntity<?> getAllFromTO(@RequestParam String from, @RequestParam String to) throws ParseException {
@@ -70,6 +69,4 @@ public class InputController {
         ApiResponse response = inputService.getAllHistoryType(supplierId, from, to);
         return ResponseEntity.ok(response);
     }
-
-
 }

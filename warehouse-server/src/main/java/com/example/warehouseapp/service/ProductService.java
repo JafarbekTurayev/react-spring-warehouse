@@ -3,9 +3,11 @@ package com.example.warehouseapp.service;
 import com.example.warehouseapp.entity.Category;
 import com.example.warehouseapp.entity.Measurement;
 import com.example.warehouseapp.entity.Product;
+import com.example.warehouseapp.entity.attachment.Attachment;
 import com.example.warehouseapp.exception.ResourceNotFoundException;
 import com.example.warehouseapp.payload.ApiResponse;
 import com.example.warehouseapp.payload.ProductDTO;
+import com.example.warehouseapp.repository.AttachmentRepository;
 import com.example.warehouseapp.repository.CategoryRepository;
 import com.example.warehouseapp.repository.MeasurementRepository;
 import com.example.warehouseapp.repository.ProductRepository;
@@ -22,6 +24,8 @@ import java.util.UUID;
 @Service
 public class ProductService {
     @Autowired
+    AttachmentRepository attachmentRepository;
+    @Autowired
     ProductRepository productRepository;
     @Autowired
     MeasurementRepository measurementRepository;
@@ -37,12 +41,13 @@ public class ProductService {
             Category category = categoryRepository.findById(productDTO.getCatId())
                     .orElseThrow(() -> new ResourceNotFoundException("category", "id", productDTO.getCatId()));
 
+            Optional<Attachment> byId = attachmentRepository.findById(productDTO.getPhotoId());
             product.setCategory(category);
 //            product.setCategory(optionalCategory.get());
             product.setMeasurement(optionalMeasurement.get());
 
             product.setName(productDTO.getName());
-
+            product.setPhoto(byId.get());
             product.setCode(UUID.randomUUID().toString());
 
             productRepository.save(product);
@@ -88,7 +93,7 @@ public class ProductService {
 
     public ApiResponse top(String top) {
 //        if (top.equals("desc")) {
-            return new ApiResponse("Mana", true, productRepository.getTopInputProducts(top));
+        return new ApiResponse("Mana", true, productRepository.getTopInputProducts(top));
 //        } else {
 //            //umuman sotilmagan
 //            return new ApiResponse("Mana", true, productRepository.getLessInputProducts(String top));

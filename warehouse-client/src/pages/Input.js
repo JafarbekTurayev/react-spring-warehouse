@@ -8,7 +8,8 @@ import {
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {API_PATH, HEADER} from "../service/api";
-
+import DatePicker from "react-datepicker";
+// registerLocale('en', en)
 const Input = () => {
         let history = useNavigate();
         const [inputs, setInputs] = useState([]);
@@ -27,6 +28,9 @@ const Input = () => {
         const [productDate, setProductDate] = useState(undefined);
         const [inputProductDTO, setInputProductDTO] = useState({});
         const [inputProducts, setInputProducts] = useState([]);
+        const [fromDate, setFromDate] = useState('');
+        const [toDate, setToDate] = useState('');
+
         useEffect(() => {
             getSuppliers()
             getInputs()
@@ -35,6 +39,12 @@ const Input = () => {
             getMeasurements()
             getWarehouses()
         }, [])
+        const getFromToInputs = () => {
+            axios.get("input?from=" + fromDate + "&to=" + toDate, HEADER)
+                .then(value => {
+                    console.log(value)
+                })
+        }
         const addRow = () => {
             let basket = {
                 productId: productId,
@@ -47,12 +57,10 @@ const Input = () => {
             setInputProducts(inputProducts)
             setHtml([...html, `Entry ${html.length + 1}`]);
         }
-
         const minusRow = () => {
             let a = html.splice(html[html.length - 1], 1)
             setHtml([...html]);
         }
-
         const getSuppliers = () => {
             //bazaga borib olib kelishi kerak
             axios.get(API_PATH + "supplier", HEADER)
@@ -153,6 +161,8 @@ const Input = () => {
         }
         return (
             <div>
+                {console.log(fromDate)}
+                {console.log(toDate)}
                 <div className="container">
                     <div className="row">
                         <div className="col-3">
@@ -161,7 +171,22 @@ const Input = () => {
                     </div>
 
                     <div className="row mt-5">
-                        {/*<Table columns={columns} data={data}/>*/}
+                        <div className="row">
+                            <div className="col-md-6">
+                                <DatePicker
+                                    dateFormat="dd-MM-yyyy"
+                                    locale="en" selected={fromDate} onChange={(date) => setFromDate(date)}/>
+                            </div>
+                            <div className="col-md-6">
+                                <DatePicker
+                                    dateFormat="dd-MM-yyyy"
+                                    locale="en" selected={toDate} onChange={(date) => {
+                                    setToDate(date)
+                                    getFromToInputs()
+                                }
+                                }/>
+                            </div>
+                        </div>
                         <Table
                             bordered
                             hover
@@ -170,8 +195,11 @@ const Input = () => {
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Name</th>
-                                <th>PhoneNumber</th>
+                                <th>FactureNumber</th>
+                                <th>Date</th>
+                                <th>Ombor</th>
+                                <th>Taminotchi</th>
+                                <th>Summa</th>
                                 <th>Operations</th>
                             </tr>
                             </thead>
@@ -183,6 +211,9 @@ const Input = () => {
                                         <th scope="row">{index + 1}</th>
                                         <td>{value.factureNumber}</td>
                                         <td>{value.date.substring(0, 10) + " " + value.date.substring(11, 19)}</td>
+                                        <td>{value.warehouseName}</td>
+                                        <td>{value.supplierName}</td>
+                                        <td>{value.summa}</td>
                                         <td>
                                             <button className="btn btn-warning" onClick={() => edit(value)}>EDIT
                                             </button>
@@ -279,7 +310,8 @@ const Input = () => {
                                                          }}/>
                                             </div>
                                             <div className="col-md-2">
-                                                <button className="mt-4 btn btn-success" onClick={() => addRow()}>+</button>
+                                                <button className="mt-4 btn btn-success" onClick={() => addRow()}>+
+                                                </button>
                                                 <button className="mt-4 btn btn-danger" onClick={() => minusRow()}>-
                                                 </button>
                                             </div>
