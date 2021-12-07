@@ -13,25 +13,34 @@ import Test from "./pages/Test";
 import Currency from "./pages/Currency";
 import Input from "./pages/Input";
 import Product from "./pages/Product";
+import {applyMiddleware, compose, createStore} from "redux";
+import redux_thunk from "redux-thunk"
+import {rootReducer} from "./redux/reducer/rootreducer";
+import {Provider} from "react-redux";
+//asosiy reducer,  asinxron compose
+export const baza = createStore(rootReducer, compose(applyMiddleware(redux_thunk)))
 
 ReactDOM.render(
-    <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<App/>}/>
-            <Route path="/login" element={<Login/>}/>
-            {/*<Route path="/supplier" element={<Supplier/>}>*/}
-            {/*    <Route path=":id" element={<OneSupplier/>}/>*/}
-            {/*    <Route path="test" element={<Test/>}/>*/}
-            {/*</Route>*/}
-            <Route path="/supplier" element={<Supplier/>}/>
-            <Route path="/supplier/:id" element={<OneSupplier/>}/>
-            <Route path="/supplier/test" element={<Test/>}/>
-            <Route path="/input" element={<Input/>}/>
-            <Route path="/currency" element={<Currency/>}/>
-            <Route path="/product" element={<Product/>}/>
-            {/*<Route path="/measurement" element={<Measurement/>}/>*/}
-        </Routes>
-    </BrowserRouter>,
+    <Provider store={baza}>
+        <App/>
+    </Provider>,
+    // <BrowserRouter>
+    //     <Routes>
+    //         <Route path="/" element={<App/>}/>
+    //         <Route path="/login" element={<Login/>}/>
+    //         {/*<Route path="/supplier" element={<Supplier/>}>*/}
+    //         {/*    <Route path=":id" element={<OneSupplier/>}/>*/}
+    //         {/*    <Route path="test" element={<Test/>}/>*/}
+    //         {/*</Route>*/}
+    //         <Route path="/supplier" element={<Supplier/>}/>
+    //         <Route path="/supplier/:id" element={<OneSupplier/>}/>
+    //         <Route path="/supplier/test" element={<Test/>}/>
+    //         <Route path="/input" element={<Input/>}/>
+    //         <Route path="/currency" element={<Currency/>}/>
+    //         <Route path="/product" element={<Product/>}/>
+    //         {/*<Route path="/measurement" element={<Measurement/>}/>*/}
+    //     </Routes>
+    // </BrowserRouter>,
     document.getElementById('root')
 )
 ;
