@@ -3,12 +3,13 @@ import Supplier from "./pages/Supplier";
 import Login from "./pages/Login";
 import {Link} from "react-router-dom";
 import Home from "./redux/component/Home";
+import SupplierRedux from "./redux/component/Supplier";
 
 const App = () => {
     return (
         <div>
             <h1>App page</h1>
-            <Home/>
+            <SupplierRedux/>
             {/*<div>*/}
             {/*    <Link to="/supplier">Supplier page</Link>*/}
             {/*    <br/>*/}
