@@ -5,6 +5,8 @@ const AdminNavbar = () => {
     return (
         <div>
             <div>
+                <Link to="/measurement">Meas page</Link>
+                <br/>
                 <Link to="/supplier">Supplier page</Link>
                 <br/>
                 <Link to="/currency">Currency page</Link>

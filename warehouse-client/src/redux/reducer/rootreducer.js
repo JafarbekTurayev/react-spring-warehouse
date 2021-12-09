@@ -1,10 +1,12 @@
 import {combineReducers} from "redux";
 import {appReducer} from "./appReducer";
+import {measurementReducer} from "./measurementReducer";
 
 //brigadir
 export const rootReducer = combineReducers(
     {
-        app: appReducer
+        app: appReducer,
+        meas:measurementReducer
         // login:loginReducer
         //supplier:suppliReducer
     }
