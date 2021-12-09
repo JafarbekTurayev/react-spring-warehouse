@@ -1,29 +1,29 @@
 import React from 'react';
-import Supplier from "./pages/Supplier";
 import Login from "./pages/Login";
-import {Link} from "react-router-dom";
-import Home from "./redux/component/Home";
+import {Link, Route, Routes} from "react-router-dom";
+import PrivateRoute from "./pages/PrivateRoute";
+import Supplier from "./redux/component/Supplier";
+import AdminNavbar from "./pages/AdminNavbar";
 import SupplierRedux from "./redux/component/Supplier";
+import {ToastContainer} from "react-toastify";
 
 const App = () => {
     return (
         <div>
-            <h1>App page</h1>
-            <SupplierRedux/>
-            {/*<div>*/}
-            {/*    <Link to="/supplier">Supplier page</Link>*/}
-            {/*    <br/>*/}
-            {/*    <Link to="/login">Login page</Link>*/}
-            {/*    <br/>*/}
-            {/*    <Link to="/currency">Currency page</Link>*/}
-            {/*    <br/>*/}
-            {/*    <Link to="/input">Input page</Link>*/}
-            {/*    <br/>*/}
-            {/*    <Link to="/product">Product page</Link>*/}
-            {/*    <br/>*/}
-            {/*</div>*/}
-
-
+            {/*<h1>App page</h1>*/}
+            <Routes>
+                <Route exact path="/" element={<PrivateRoute/>}>
+                    <Route exact path='/' element={<AdminNavbar/>}/>
+                    {/*<Route path="/supplier/:id" element={<OneSupplier/>}/>*/}
+                    {/*<Route path="/supplier/test" element={<Test/>}/>*/}
+                    {/*<Route path="/input" element={<Input/>}/>*/}
+                    {/*<Route path="/currency" element={<Currency/>}/>*/}
+                    {/*<Route path="/product" element={<Product/>}/>*/}
+                </Route>
+                <Route exact path="/login" element={<Login/>}/>
+                <Route exact path="/supplier" element={<SupplierRedux/>}/>
+            </Routes>
+            <ToastContainer/>
         </div>
     );
 };

@@ -34,3 +34,59 @@ export function getSuppliers() {
     }
 }
 
+export function addSupplier(malumotlar) {
+    return function (dispatch) {
+        axios.post(API_PATH + "supplier", malumotlar, HEADER)
+            .then((res) => {
+                console.log(res)
+                if (res.data.success) {
+                    toast.success("Saved!")
+                } else {
+                    toast.error("Xatolik!")
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                toast.error("Xatolik!");
+            })
+    }
+}
+
+export function editSupplier(id, malumotlar) {
+    return function (dispatch) {
+        axios.put(API_PATH + "supplier/" + id, malumotlar, HEADER)
+            .then((res) => {
+                console.log(res)
+                if (res.data.success) {
+                    toast.success("UPDATED!")
+                    getSuppliers()
+                } else {
+                    toast.error("Xatolik!")
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                toast.error("Xatolik!");
+            })
+    }
+}
+
+export function deleteSupplier(id) {
+    return function (dispatch) {
+        axios.delete(API_PATH + "supplier/" + id, HEADER)
+            .then((res) => {
+                getSuppliers()
+                console.log(res)
+                if (res.data) {
+                    toast.success("DELETED!")
+                } else {
+                    toast.error("Xatolik!")
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                toast.error("Xatolik!");
+            })
+    }
+}
+

@@ -3,7 +3,8 @@ import {GET_SUPPLIER, UPDATE_STATE} from "../type/types";
 const initialState = {
     modalOpen: false,
     deleteModal: false,
-    currentSupplier: false,
+    currentSupplier: undefined,
+    deleteSupplierId: undefined,
     suppliers: [],
     categories: [],
     products: [],

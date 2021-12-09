@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {Modal, ModalBody, ModalHeader, Table} from "reactstrap";
 import {AvField, AvForm} from "availity-reactstrap-validation";
 import {UPDATE_STATE} from "../type/types";
-import {getSuppliers, updateState} from "../action/appAction";
+import {addSupplier, deleteSupplier, editSupplier, getSuppliers, updateState} from "../action/appAction";
 import {connect} from "react-redux";
 
 const SupplierRedux = (props) => {
@@ -10,14 +10,52 @@ const SupplierRedux = (props) => {
         props.getSuppliers()
     }, [])
     const open = () => {
-        console.log("keldi")
         props.updateState(
             {
                 modalOpen: !props.modalOpen
             }
         )
     }
+    const openDeleteModal = () => {
+        props.updateState(
+            {
+                deleteModal: !props.deleteModal
+            }
+        )
+    }
+    const saveSupplier = (event, values) => {
+        if (props.currentSupplier !== undefined) {
+            props.editSupplier(props.currentSupplier.id, values)
+            props.getSuppliers()
+            open()
+        } else {
+            props.addSupplier(values);
+            props.getSuppliers()
+            open()
+        }
+    }
 
+    const edit = (item) => {
+        props.updateState(
+            {
+                modalOpen: !props.modalOpen,
+                currentSupplier: item
+            }
+        )
+    }
+    const deleteS = (item) => {
+        props.updateState(
+            {
+                deleteModal: !props.deleteModal,
+                deleteSupplierId: item.id
+            }
+        )
+    }
+    const deleteSupplier = () => {
+        props.deleteSupplier(props.deleteSupplierId)
+        // props.getSuppliers()
+        openDeleteModal()
+    }
     return (
         <div>
             <div>
@@ -50,13 +88,13 @@ const SupplierRedux = (props) => {
                                         <th scope="row">{index + 1}</th>
                                         <td>{value.name}</td>
                                         <td>{value.phoneNumber}</td>
-                                        {/*<td>*/}
-                                        {/*    <button className="btn btn-warning" onClick={() => edit(value)}>EDIT*/}
-                                        {/*    </button>*/}
-                                        {/*    <button className="btn btn-danger"*/}
-                                        {/*            onClick={() => deleteSupplier(value)}>DELETE*/}
-                                        {/*    </button>*/}
-                                        {/*</td>*/}
+                                        <td>
+                                            <button className="btn btn-warning" onClick={() => edit(value)}>EDIT
+                                            </button>
+                                            <button className="btn btn-danger"
+                                                    onClick={() => deleteS(value)}>DELETE
+                                            </button>
+                                        </td>
                                     </tr>
                                 )
                             }
@@ -69,28 +107,29 @@ const SupplierRedux = (props) => {
                     <ModalHeader toggle={() => open()}>
                         Supplier qo'shish
                     </ModalHeader>
-                    {/*<ModalBody>*/}
+                    <ModalBody>
 
-                    {/*    <AvForm onValidSubmit={saveSupplier}>*/}
-                    {/*        /!* With AvField *!/*/}
-                    {/*        <AvField name="name" label="Nomi" required value={currentItem ? currentItem.name : ""}/>*/}
-                    {/*        <AvField name="phoneNumber" label="Telefon nomer" required*/}
-                    {/*                 value={currentItem ? currentItem.phoneNumber : ""}/>*/}
-                    {/*        <button type="submit">Save</button>*/}
-                    {/*    </AvForm>*/}
-                    {/*</ModalBody>*/}
+                        <AvForm onValidSubmit={saveSupplier}>
+                            {/* With AvField */}
+                            <AvField name="name" label="Nomi" required
+                                     value={props.currentSupplier ? props.currentSupplier.name : ""}/>
+                            <AvField name="phoneNumber" label="Telefon nomer" required
+                                     value={props.currentSupplier ? props.currentSupplier.phoneNumber : ""}/>
+                            <button type="submit">Save</button>
+                        </AvForm>
+                    </ModalBody>
                 </Modal>
 
-                {/*<Modal isOpen={deleteModal}>*/}
-                {/*    <ModalHeader toggle={() => closeDelete()}>*/}
-                {/*        O'chirishni tasdiqlaysizmi?*/}
-                {/*    </ModalHeader>*/}
-                {/*    <ModalBody>*/}
-                {/*        <button onClick={() => deleteSupp()}>Xa</button>*/}
-                {/*        <button onClick={() => closeDelete()}>Yo'q</button>*/}
+                <Modal isOpen={props.deleteModal}>
+                    <ModalHeader toggle={() => openDeleteModal()}>
+                        O'chirishni tasdiqlaysizmi?
+                    </ModalHeader>
+                    <ModalBody>
+                        <button onClick={() => deleteSupplier()}>Xa</button>
+                        <button onClick={() => openDeleteModal()}>Yo'q</button>
 
-                {/*    </ModalBody>*/}
-                {/*</Modal>*/}
+                    </ModalBody>
+                </Modal>
             </div>
         </div>
     );
@@ -100,8 +139,17 @@ const mapStateToProps = (state) => {
     return {
         suppliers: state.app.suppliers,
         me: state.app.currentUser,
-        modalOpen: state.app.modalOpen
+        modalOpen: state.app.modalOpen,
+        deleteModal: state.app.deleteModal,
+        currentSupplier: state.app.currentSupplier,
+        deleteSupplierId: state.app.deleteSupplierId
     }
 }
 
-export default connect(mapStateToProps, {getSuppliers, updateState})(SupplierRedux);
+export default connect(mapStateToProps, {
+    getSuppliers,
+    updateState,
+    editSupplier,
+    addSupplier,
+    deleteSupplier
+})(SupplierRedux);

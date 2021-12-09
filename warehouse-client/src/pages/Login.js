@@ -12,7 +12,7 @@ const Login = () => {
             .then(value => {
                 console.log(value)
                 localStorage.setItem("warehouse-token", "Bearer " + value.data)
-                ketmon("/supplier")
+                ketmon("/admin")
             })
     }
     return (
